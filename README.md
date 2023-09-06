@@ -1,9 +1,13 @@
 # Some basic CS and ML algos
 
+<<<<<<< HEAD
 
 ## Merge sort
 
 Recursive merge sort. Graphs show the time complexity.
+=======
+Implementing recursive merge sort. The graphs show the time complexity of the merge sort measurements in comparison with other complexities.
+>>>>>>> b0fb2ba557cbb79c2ca69afa70a2fc9ff0b65dea
 
 ![measurements](https://github.com/pettod/merge-sort/assets/33998401/26d45a62-c7aa-4397-be0e-de050021b0ee)
 
