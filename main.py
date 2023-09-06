@@ -74,7 +74,7 @@ def main():
     plt.title("O(n^2)")
     plt.xlabel("Number of elements to sort")
     plt.tight_layout()
-    plt.plto()
+    plt.plot()
 
 
 main()
