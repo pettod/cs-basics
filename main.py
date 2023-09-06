@@ -1,7 +1,11 @@
+import math
 import matplotlib.pyplot as plt
 import numpy as np
 from tqdm import tqdm
 from time import time
+
+
+SPACE = 0
 
 
 def merge(left, right):
@@ -23,27 +27,34 @@ def merge(left, right):
 
 
 def merge_sort(array):
+    global SPACE
     if len(array) <= 1:
         return array
     middle = len(array) // 2
     left = merge_sort(array[:middle])
     right = merge_sort(array[middle:])
+    SPACE += len(array)
     array = merge(left, right)
     return array
 
 
 def main():
+    global SPACE
     number_of_elements = [5*i for i in range(1, 200)]
     times = []
+    spaces = []
     for elements in tqdm(number_of_elements):
+        SPACE = 0
         array = np.arange(elements)
         np.random.shuffle(array)
         start_time = time()
         array = merge_sort(array)
         times.append(time() - start_time)
-    print(times)
-    for elements, time_ in zip(number_of_elements, times):
-        print("{:10} {:10}".format(elements, time_))
+        spaces.append(SPACE)
+    print("  n   | logn |  space  |  time")
+    print("------|------|---------|-------")
+    for elements, time_, space in zip(number_of_elements, times, spaces):
+        print("{:5} | {:4} | {:7} | {:7}".format(elements, round(math.log2(elements), 2), space, round(time_, 5)))
 
     plt.subplot(2,2,1)
     plt.plot(number_of_elements, times, label="Measurements")
@@ -63,7 +74,7 @@ def main():
     plt.title("O(n^2)")
     plt.xlabel("Number of elements to sort")
     plt.tight_layout()
-    plt.show()
+    plt.plto()
 
 
 main()
