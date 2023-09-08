@@ -24,7 +24,7 @@ $\pi = 4 \frac{N_{circle}}{N_{square}}$
 
 ## Principal component analysis (PCA)
 
-Reducing 4 dimensions to 2 by computing eigen vectors and selecting the ones with the highest variance. With the new principal components it is easier to visualize the data.
+Reducing 4 dimensional data to 2 by computing eigen vectors and selecting the ones with the highest variance. With the new principal components it is easier to visualize the data.
 
 ![pca](https://github.com/pettod/cs-basics/assets/33998401/2d84a9ba-a9a3-4cf8-b49b-fa072aaf9273)
 
