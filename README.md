@@ -18,7 +18,7 @@ $$
 A_{square} = (2r) ^ 2 = 4 r^{2}
 $$
 
-A uniform random sampling is applied to the area of the square and the number of the points which hit the area of the circle are calculated. To estimate $\pi$, a relation is calculated between the number of points in the circle and in the whole square.
+A uniform random sampling is applied to the area of the square and the number of the points which hit the area of the circle are counted. To estimate $\pi$, the relationship between the number of points in the circle and in the whole square is calculated.
 
 $$
 \frac{A_{circle}}{A_{square}} = \frac{N_{circle}}{N_{square}} = \frac{\pi r^{2}}{4 r^{2}}
@@ -34,7 +34,7 @@ $$
 
 ## Principal component analysis (PCA)
 
-Reducing 4 dimensional data to 2 by computing eigen vectors and selecting the ones with the highest variance. With the new principal components it is easier to visualize the data.
+Reducing 4 dimensional data to 2 by computing eigenvectors and selecting the ones with the highest variance. With the new principal components it is easier to visualize the data.
 
 ![pca](https://github.com/pettod/cs-basics/assets/33998401/2d84a9ba-a9a3-4cf8-b49b-fa072aaf9273)
 
