@@ -1,5 +1,7 @@
 # Some basic CS and ML algos
 
+Collection of multiple basic concepts in computer science and machine learning.
+
 ## Monte Carlo
 
 Estimating $\pi$ with Monte Carlo technique.
