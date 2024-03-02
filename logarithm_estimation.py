@@ -56,11 +56,11 @@ def initialGuess(x, mid=None, left=None, right=None):
 def log2(x, iterations=10):
     guess = initialGuess(x)
 
-    # 4 ops per iteration
+    # 3 ops per iteration
     # Newton-Raphson iteration
     # https://www.geeksforgeeks.org/newton-raphson-method/
     for _ in range(iterations):
-        guess = guess - (guess - x / guess) / 2.0
+        guess = (guess + x / guess) / 2.0
     return guess
 
 
@@ -80,10 +80,11 @@ def main():
     # Plot
     plt.plot(errors)
     lut_ops = math.ceil(math.log2(len(LUT_VALUE))) + 1
-    plt.title(f"log2() estimation with {iterations} * 4 + {lut_ops} ops = {iterations * 4 + lut_ops} ops")
+    total_ops = iterations * 3 + lut_ops
+    plt.title(f"log2() estimation with {iterations} * 3 + {lut_ops} ops = {total_ops} ops")
     plt.xlabel("Input digit")
     plt.ylabel("Relative Error (%)")
-    plt.savefig("newton_raphson_logarithm.png")
+    plt.savefig(f"newton-raphson_logarithm_{total_ops}-ops.png")
 
 
 main()
