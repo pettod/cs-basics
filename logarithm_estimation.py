@@ -66,7 +66,7 @@ def log2(x, iterations=10):
 
 
 def main():
-    iterations = 3
+    iterations = 2
     input_values = list(range(1, 2**26, 10))
 
     # Calculate logarithms
@@ -79,20 +79,20 @@ def main():
         relative_error = round(abs(input_value - result ** 2) / input_value * 100, 2)
         if relative_error > 1:
             threshold_count += 1
-        progress_bar.set_description(f">{threshold}%: {threshold_count}")
+        #progress_bar.set_description(f">{threshold}%: {threshold_count}")  # This is SLOW!
         errors.append(relative_error)
     print(f">{threshold}%: {round(100 * threshold_count / len(progress_bar), 2)}%")
     print(f"Max error: {max(errors)}%")
     print(f"Average error: {round(np.mean(np.array(errors)), 6)}%")
 
     # Plot
-    plt.plot(list(range(len(errors))), len(errors) * [threshold], color="tab:gray", alpha=0.5)
+    #plt.plot(list(range(len(errors))), len(errors) * [threshold], color="tab:gray", alpha=0.5)
     plt.plot(errors)
     lut_ops = math.ceil(math.log2(len(LUT_VALUE))) + 1
     total_ops = iterations * 3 + lut_ops
-    plt.title(f"log2() estimation with {iterations} * 3 + {lut_ops} ops = {total_ops} ops")
+    plt.title(f"log2() estimation with {total_ops} OPS")
     plt.xlabel("Input digit")
-    plt.ylabel("Relative Error (%)")
+    plt.ylabel("Relative error (%)")
     plt.savefig(f"newton-raphson_logarithm_{total_ops}-ops.png")
 
 
