@@ -56,11 +56,10 @@ To get an accurate result with an initial guess of $x_0 = x / 2$, it will requir
 
 The LUT I created, includes 8 division factors requiring 4 operations ([OPS](https://en.wikipedia.org/wiki/FLOPS)) in total to set the initial guess. 3 OPS is used for finding the right division factor with [binary search](https://en.wikipedia.org/wiki/Binary_search_algorithm) and 1 operation is used for the division. Executing one iteration of Newton-Raphson method requires 3 operations. In this setup 2 to 3 iterations were enough to approximate logarithm. See the statistics in the table and approximation errors in the figure.
 
-| Iterations | Average error | Max error | OPS                |   |
-|------------|---------------|-----------|--------------------|---|
-| 2          | 0.32%         | 14.45%    | 2 * 3 + 4 = **10** |   |
-| 3          | 0.00014%      | 0.46%     | 3 * 3 + 4 = **13** |   |
-|            |               |           |                    |   |
+| Iterations | Average error | Max error | OPS                |
+|------------|---------------|-----------|--------------------|
+| 2          | 0.32%         | 14.45%    | 2 * 3 + 4 = **10** |
+| 3          | 0.00014%      | 0.46%     | 3 * 3 + 4 = **13** |
 
 ![Approximation errors](https://github.com/pettod/cs-basics/assets/33998401/3cbc7830-d10a-4873-bbfc-455d8bc960c2)
 
