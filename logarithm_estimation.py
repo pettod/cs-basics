@@ -1,5 +1,6 @@
 import math
 import matplotlib.pyplot as plt
+import numpy as np
 from tqdm import tqdm
 
 
@@ -70,14 +71,22 @@ def main():
 
     # Calculate logarithms
     errors = []
-    for input_value in tqdm(input_values):
+    threshold = 1
+    threshold_count = 0
+    progress_bar = tqdm(input_values)
+    for input_value in progress_bar:
         result = log2(input_value, iterations)
         relative_error = round(abs(input_value - result ** 2) / input_value * 100, 2)
-        if relative_error < 1:
-            print(input_value)
+        if relative_error > 1:
+            threshold_count += 1
+        progress_bar.set_description(f">{threshold}%: {threshold_count}")
         errors.append(relative_error)
+    print(f">{threshold}%: {round(100 * threshold_count / len(progress_bar), 2)}%")
+    print(f"Max error: {max(errors)}%")
+    print(f"Average error: {round(np.mean(np.array(errors)), 6)}%")
 
     # Plot
+    plt.plot(list(range(len(errors))), len(errors) * [threshold], color="tab:gray", alpha=0.5)
     plt.plot(errors)
     lut_ops = math.ceil(math.log2(len(LUT_VALUE))) + 1
     total_ops = iterations * 3 + lut_ops
