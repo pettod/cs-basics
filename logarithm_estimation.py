@@ -66,7 +66,7 @@ def log2(x, iterations=10):
 
 
 def main():
-    iterations = 2
+    iterations = 3
     input_values = list(range(1, 2**26, 10))
 
     # Calculate logarithms
@@ -90,7 +90,7 @@ def main():
     plt.plot(errors)
     lut_ops = math.ceil(math.log2(len(LUT_VALUE))) + 1
     total_ops = iterations * 3 + lut_ops
-    plt.title(f"log2() estimation with {total_ops} OPS")
+    plt.title(f"log2() approximation with {total_ops} OPS")
     plt.xlabel("Input digit")
     plt.ylabel("Relative error (%)")
     plt.savefig(f"newton-raphson_logarithm_{total_ops}-ops.png")
