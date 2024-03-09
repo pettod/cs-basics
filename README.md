@@ -74,7 +74,7 @@ $$
 
 where $S$ is the input digit. However, to get an accurate result with this initial value, it will require 10 iterations to get <1 % maximum error. To approximate the answer faster, one could setup a small LUT for a more accurate initial value.
 
-The LUT I have manually created, includes 8 division factors $d$ requiring 4 FLOPS in total to set the initial value. 3 FLOPS is used for finding the right division factor with [binary search](https://en.wikipedia.org/wiki/Binary_search_algorithm) and 1 flop is used for the division
+The LUT I have manually created, includes 8 division factors $d$ requiring 4 FLOPS in total to set the initial value. 3 FLOPS is used for finding the correct division factor with [binary search](https://en.wikipedia.org/wiki/Binary_search_algorithm) and 1 flop is used for the division
 
 $$
 x_0 = \frac{S}{d}.
