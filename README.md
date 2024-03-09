@@ -82,7 +82,7 @@ $$
 
 Executing one iteration of Newton-Raphson method requires 3 FLOPS. In this setup, 2 to 3 iterations were enough to approximate logarithm. See the statistics in the table and approximation accuracy in the figure.
 
-| Iterations | Average error | Max error | OPS                |
+| Iterations | Average error | Max error | FLOPS              |
 |------------|---------------|-----------|--------------------|
 | 2          | 0.16 %        | 6.98 %    | 2 * 3 + 4 = **10** |
 | 3          | 0.00001 %     | 0.23 %    | 3 * 3 + 4 = **13** |
@@ -104,6 +104,16 @@ $$
 where $x$ is the input value and $c = 0.36787944117144233$. See the approximation below.
 
 ![sigmoid](https://github.com/pettod/cs-basics/assets/33998401/1fe8d856-557b-4d18-ae39-a1b1bb995221)
+
+## Logarithm approximation and FLOPS
+
+Approximated logarithm with base 2 using LUT and piecewise linear interpolation. Binary search over 32 element long LUT requires 5 FLOPS, and linear interpolation 3 FLOPS, totaling 8 FLOPS.
+
+| Average error | Max error | FLOPS     |
+|---------------|-----------|-----------|
+| 1.25 %        | 21.13 %   | 3 + 5 = 8 |
+
+![log2_errors](https://github.com/pettod/cs-basics/assets/33998401/4df535d8-2686-48a0-918d-26c9231587b1)
 
 ## Merge sort
 

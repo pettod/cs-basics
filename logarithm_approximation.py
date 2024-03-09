@@ -74,9 +74,9 @@ INPUT_VALUE = [
 
 
 def searchSegment(x):
-    # 5 OPS: range(1, 2**32)
+    # 5 flops: range(1, 2**32)
     # ceil(log2(len(lut)))
-    # No extra OPS with manual binary search
+    # No extra flops with manual binary search
 
     if x < INPUT_VALUE[15]:
         if x < INPUT_VALUE[7]:
@@ -185,7 +185,7 @@ def log2(x):
     dy = 1  # y2 - y1, constant
     a = dy / dx  # Constant
 
-    # 3 OPS to interpolate
+    # 3 flops to interpolate
     return a * (x - x1) + y1
 
 
@@ -214,31 +214,32 @@ def main():
 
     # Plot
     #plt.plot(list(range(len(errors))), len(errors) * [threshold], color="tab:gray", alpha=0.5)
-    total_ops = 8
+    total_flops = 8
 
     # Linear
     plt.plot(input_values, errors)
-    plt.title(f"Log2 approximation with {total_ops} OPS")
-    plt.xlabel("Digit")
+    plt.title(f"Log2 approximation with {total_flops} FLOPS")
+    plt.xlabel("x")
     plt.ylabel("Relative error (%)")
-    plt.savefig(f"log2_{total_ops}-ops_linear.png")
+    plt.savefig(f"log2_{total_flops}-flops_linear.png")
 
     # Logarithmic
     plt.xscale("log")
-    plt.title(f"Log2 approximation with {total_ops} OPS")
-    plt.xlabel("Digit")
+    plt.title(f"Log2 approximation with {total_flops} FLOPS")
+    plt.xlabel("x")
     plt.ylabel("Relative error (%)")
-    plt.savefig(f"log2_{total_ops}-ops_logarithmic.png")
+    plt.savefig(f"log2_{total_flops}-flops_logarithmic.png")
     plt.close()
 
     # Overlay results
-    plt.plot(input_values, approximated_values, label="Approximated")
     plt.plot(input_values, real_values, label="Real")
+    plt.plot(input_values, approximated_values, label="Approximated")
+    plt.legend()
     plt.xscale("log")
-    plt.title(f"Log2 approximation with {total_ops} OPS")
+    plt.title(f"Log2 approximation with {total_flops} FLOPS")
     plt.xlabel("x")
-    plt.ylabel("lo2(x)")
-    plt.savefig(f"log2_{total_ops}-ops_logarithmic_comparison.png")
+    plt.ylabel("log2(x)")
+    plt.savefig(f"log2_{total_flops}-flops_logarithmic_comparison.png")
 
 
 main()
