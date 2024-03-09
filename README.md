@@ -91,7 +91,7 @@ Executing one iteration of Newton-Raphson method requires 3 FLOPS. In this setup
 
 ## Sigmoid approximation and FLOPS
 
-Using [Padé approximant](https://en.wikipedia.org/wiki/Pad%C3%A9_approximant) sigmoid can be approximated with 4 FLOPS in a following way:
+Using [Padé approximant](https://en.wikipedia.org/wiki/Pad%C3%A9_approximant), sigmoid can be approximated with 4 FLOPS in a following way:
 
 $$
 s = 
@@ -107,7 +107,7 @@ where $x$ is the input value and $c = 0.36787944117144233$. See the approximatio
 
 ## Logarithm approximation and FLOPS
 
-Approximated logarithm with base 2 using LUT and piecewise linear interpolation. Binary search over 32 element long LUT requires 5 FLOPS, and linear interpolation 3 FLOPS, totaling 8 FLOPS.
+Approximated logarithm with base 2 using LUT and piecewise linear interpolation. First, 32 element long LUT is used to search for initial guess with binary search, that requires 5 FLOPS. Second, linear interpolation is applied requiring 3 FLOPS. Total number of FLOPS is 8.
 
 | Average error | Max error | FLOPS     |
 |---------------|-----------|-----------|
