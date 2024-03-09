@@ -66,7 +66,7 @@ def squareRoot(x, iterations=10):
 
 
 def main():
-    iterations = 2
+    iterations = 3
     input_values = list(range(1, 2**26, 10))
 
     # Calculate logarithms
@@ -98,14 +98,14 @@ def main():
     plt.title(f"Square root approximation with {total_ops} OPS")
     plt.xlabel("Digit")
     plt.ylabel("Relative error (%)")
-    plt.savefig(f"new_newton-raphson_square-root_{total_ops}-ops_linear.png")
+    plt.savefig(f"square-root_{total_ops}-ops_linear.png")
 
     # Logarithmic
     plt.xscale("log")
     plt.title(f"Square root approximation with {total_ops} OPS")
     plt.xlabel("Digit")
     plt.ylabel("Relative error (%)")
-    plt.savefig(f"new_newton-raphson_square-root_{total_ops}-ops_logarithmic.png")
+    plt.savefig(f"square-root_{total_ops}-ops_logarithmic.png")
     plt.close()
 
     # Overlay results
@@ -116,7 +116,7 @@ def main():
     plt.title(f"Square root approximation with {total_ops} OPS")
     plt.xlabel("x")
     plt.ylabel("sqrt(x)")
-    plt.savefig(f"new_newton-raphson_square-root_{total_ops}-ops_logarithmic_comparison.png")
+    plt.savefig(f"square-root_{total_ops}-ops_logarithmic_comparison.png")
 
 
 main()
