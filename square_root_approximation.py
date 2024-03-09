@@ -67,7 +67,7 @@ def squareRoot(x, iterations=10):
 
 def main():
     iterations = 3
-    input_values = list(range(1, 2**26, 10))
+    input_values = list(range(1, 2**26, 1))
 
     # Calculate logarithms
     errors = []
@@ -96,14 +96,14 @@ def main():
     # Linear
     plt.plot(input_values, errors)
     plt.title(f"Square root approximation with {total_flops} FLOPS")
-    plt.xlabel("Digit")
+    plt.xlabel("x")
     plt.ylabel("Relative error (%)")
     plt.savefig(f"sqrt_{total_flops}-flops_linear.png")
 
     # Logarithmic
     plt.xscale("log")
     plt.title(f"Square root approximation with {total_flops} FLOPS")
-    plt.xlabel("Digit")
+    plt.xlabel("x")
     plt.ylabel("Relative error (%)")
     plt.savefig(f"sqrt_{total_flops}-flops_logarithmic.png")
     plt.close()

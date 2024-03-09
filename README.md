@@ -87,9 +87,23 @@ Executing one iteration of Newton-Raphson method requires 3 FLOPS. In this setup
 | 2          | 0.16 %        | 6.98 %    | 2 * 3 + 4 = **10** |
 | 3          | 0.00001 %     | 0.23 %    | 3 * 3 + 4 = **13** |
 
-![Approximation errors](https://github.com/pettod/cs-basics/assets/33998401/3cbc7830-d10a-4873-bbfc-455d8bc960c2)
+![sqrt_10_13](https://github.com/pettod/cs-basics/assets/33998401/d48e1a01-0fd6-4538-be46-03f62f370dd8)
 
-## Sigmoid approximation and
+## Sigmoid approximation and FLOPS
+
+Using [Padé approximant](https://en.wikipedia.org/wiki/Pad%C3%A9_approximant) sigmoid can be approximated with 4 FLOPS in a following way:
+
+$$
+s = 
+\begin{cases}
+      \frac{c}{1 - x} &, x < 0\\
+      1 - \frac{c}{1 + x} &, \text{otherwise}
+\end{cases} 
+$$
+
+where $x$ is the input value and $c = 0.36787944117144233$. See the approximation below.
+
+![sigmoid](https://github.com/pettod/cs-basics/assets/33998401/1fe8d856-557b-4d18-ae39-a1b1bb995221)
 
 ## Merge sort
 
