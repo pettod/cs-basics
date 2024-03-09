@@ -38,7 +38,7 @@ Reducing 4 dimensional data to 2 by computing eigenvectors and selecting the one
 
 ![pca](https://github.com/pettod/cs-basics/assets/33998401/2d84a9ba-a9a3-4cf8-b49b-fa072aaf9273)
 
-## Square root approximation and OPS
+## Square root approximation and FLOPS
 
 Approximating square root function with an integer range from 1 to 2<sup>26</sup> = 67,108,864 using [Newton-Raphson method](https://en.wikipedia.org/wiki/Newton%27s_method) and a small, memory efficient [lookup table](https://en.wikipedia.org/wiki/Lookup_table) (LUT).
 
@@ -52,7 +52,7 @@ where $x_n$ is the initial value of $x$, $f(x_n)$ is the value of the equation a
 
 ![newton_raphson_method](https://github.com/pettod/cs-basics/assets/33998401/457aec38-4cca-419f-b3fd-21d6745f7f52)
 
-When approximating the square root function using Newton's method, the function $f(x) = x^2 - S$, and $f'(x) = 2x$. To find the final function and minimize the FLOPS from 5 to 3, the function will become to a following form:
+When approximating the square root function using Newton's method, the function $f(x) = x^2 - S$, and $f'(x) = 2x$. To find the final function and minimize the floating point operations ([FLOPS](https://en.wikipedia.org/wiki/FLOPS)) from 5 to 3, the function will become to a following form:
 
 $$
 \begin{aligned}
@@ -74,20 +74,22 @@ $$
 
 where $S$ is the input digit. However, to get an accurate result with this initial value, it will require 10 iterations to get <1 % maximum error. To approximate the answer faster, one could setup a small LUT for a more accurate initial value.
 
-The LUT I have manually created, includes 8 division factors $d$ requiring 4 operations ([OPS](https://en.wikipedia.org/wiki/FLOPS)) in total to set the initial value. 3 OPS is used for finding the right division factor with [binary search](https://en.wikipedia.org/wiki/Binary_search_algorithm) and 1 operation is used for the division
+The LUT I have manually created, includes 8 division factors $d$ requiring 4 FLOPS in total to set the initial value. 3 FLOPS is used for finding the right division factor with [binary search](https://en.wikipedia.org/wiki/Binary_search_algorithm) and 1 flop is used for the division
 
 $$
 x_0 = \frac{S}{d}.
 $$
 
-Executing one iteration of Newton-Raphson method requires 3 operations. In this setup, 2 to 3 iterations were enough to approximate logarithm. See the statistics in the table and approximation accuracy in the figure.
+Executing one iteration of Newton-Raphson method requires 3 FLOPS. In this setup, 2 to 3 iterations were enough to approximate logarithm. See the statistics in the table and approximation accuracy in the figure.
 
 | Iterations | Average error | Max error | OPS                |
 |------------|---------------|-----------|--------------------|
-| 2          | 0.32 %        | 14.45 %   | 2 * 3 + 4 = **10** |
-| 3          | 0.00014 %     | 0.46 %    | 3 * 3 + 4 = **13** |
+| 2          | 0.16 %        | 6.98 %    | 2 * 3 + 4 = **10** |
+| 3          | 0.00001 %     | 0.23 %    | 3 * 3 + 4 = **13** |
 
 ![Approximation errors](https://github.com/pettod/cs-basics/assets/33998401/3cbc7830-d10a-4873-bbfc-455d8bc960c2)
+
+## Sigmoid approximation and
 
 ## Merge sort
 
