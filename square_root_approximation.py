@@ -74,6 +74,8 @@ def main():
     threshold = 1
     threshold_count = 0
     progress_bar = tqdm(input_values)
+    approximated_values = []
+    real_values = []
     for input_value in progress_bar:
         result = squareRoot(input_value, iterations)
         real_sqrt = math.sqrt(input_value)
@@ -81,6 +83,8 @@ def main():
         if relative_error > 1:
             threshold_count += 1
         errors.append(relative_error)
+        approximated_values.append(result)
+        real_values.append(real_sqrt)
     print(f">{threshold}%: {round(100 * threshold_count / len(progress_bar), 2)}%")
     print(f"Max error: {max(errors)}%")
     print(f"Average error: {round(np.mean(np.array(errors)), 6)}%")
@@ -102,6 +106,17 @@ def main():
     plt.xlabel("Digit")
     plt.ylabel("Relative error (%)")
     plt.savefig(f"new_newton-raphson_square-root_{total_ops}-ops_logarithmic.png")
+    plt.close()
+
+    # Overlay results
+    plt.plot(input_values, approximated_values, label="Approximated")
+    plt.plot(input_values, real_values, label="Real")
+    plt.xscale("log")
+    plt.yscale("log")
+    plt.title(f"Square root approximation with {total_ops} OPS")
+    plt.xlabel("x")
+    plt.ylabel("sqrt(x)")
+    plt.savefig(f"new_newton-raphson_square-root_{total_ops}-ops_logarithmic_comparison.png")
 
 
 main()
