@@ -4,7 +4,7 @@ import numpy as np
 
 
 def sigmoid(x):
-    # 4 ops
+    # 4 flops
     c = 0.36787944117144233
     if x >= 0:
         return 1 - c / (1 + x)
@@ -26,7 +26,7 @@ def main():
     plt.plot(data_range, real, label="Real")
     plt.plot(data_range, approximated, label="Approximated")
     plt.legend()
-    plt.title("Sigmoid approximation with 4 OPS")
+    plt.title("Sigmoid approximation with 4 FLOPS")
     plt.savefig("sigmoid.png")
 
 

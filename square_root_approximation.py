@@ -26,9 +26,9 @@ LUT_VALUE = [
 
 
 def initialGuess(x, mid=None, left=None, right=None):
-    # ceil(log2(len(lut_table))) + 1 ops
+    # ceil(log2(len(lut_table))) + 1 flops
 
-    # No extra ops with manual binary search
+    # No extra flops with manual binary search
     if x < LUT_VALUE[3]:
         if x < LUT_VALUE[1]:
             if x < LUT_VALUE[0]:
@@ -57,7 +57,7 @@ def initialGuess(x, mid=None, left=None, right=None):
 def squareRoot(x, iterations=10):
     guess = initialGuess(x)
 
-    # 3 ops per iteration
+    # 3 flops per iteration
     # Newton-Raphson iteration
     # https://www.geeksforgeeks.org/newton-raphson-method/
     for _ in range(iterations):
@@ -90,22 +90,22 @@ def main():
     print(f"Average error: {round(np.mean(np.array(errors)), 6)}%")
 
     # Plot
-    lut_ops = math.ceil(math.log2(len(LUT_VALUE))) + 1
-    total_ops = 3 * iterations + lut_ops
+    lut_flops = math.ceil(math.log2(len(LUT_VALUE))) + 1
+    total_flops = 3 * iterations + lut_flops
 
     # Linear
     plt.plot(input_values, errors)
-    plt.title(f"Square root approximation with {total_ops} OPS")
+    plt.title(f"Square root approximation with {total_flops} FLOPS")
     plt.xlabel("Digit")
     plt.ylabel("Relative error (%)")
-    plt.savefig(f"square-root_{total_ops}-ops_linear.png")
+    plt.savefig(f"sqrt_{total_flops}-flops_linear.png")
 
     # Logarithmic
     plt.xscale("log")
-    plt.title(f"Square root approximation with {total_ops} OPS")
+    plt.title(f"Square root approximation with {total_flops} FLOPS")
     plt.xlabel("Digit")
     plt.ylabel("Relative error (%)")
-    plt.savefig(f"square-root_{total_ops}-ops_logarithmic.png")
+    plt.savefig(f"sqrt_{total_flops}-flops_logarithmic.png")
     plt.close()
 
     # Overlay results
@@ -113,10 +113,10 @@ def main():
     plt.plot(input_values, real_values, label="Real")
     plt.xscale("log")
     plt.yscale("log")
-    plt.title(f"Square root approximation with {total_ops} OPS")
+    plt.title(f"Square root approximation with {total_flops} FLOPS")
     plt.xlabel("x")
     plt.ylabel("sqrt(x)")
-    plt.savefig(f"square-root_{total_ops}-ops_logarithmic_comparison.png")
+    plt.savefig(f"sqrt_{total_flops}-flops_logarithmic_comparison.png")
 
 
 main()
